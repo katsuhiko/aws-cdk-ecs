@@ -28,3 +28,14 @@ npm ls typescript
 もしくは
 ./node_modules/typescript/bin/tsc --version
 ```
+
+----
+
+参考サイト
+
+- https://dev.classmethod.jp/articles/aws-cdk-command-line-interface/
+    - https://github.com/cm-wada-yusuke/eval-cdk
+- https://dev.classmethod.jp/articles/aws-cdk-ec2-web3tier/
+    - https://github.com/intercept6/aws-cdk-ec2_web3tier
+- https://docs.aws.amazon.com/cdk/api/latest/docs/aws-construct-library.html
+- https://github.com/aws-samples/aws-cdk-examples
