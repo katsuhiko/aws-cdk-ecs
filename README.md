@@ -20,3 +20,11 @@ CDK で環境を構築するリージョンに対して最初の一回のみ実�
 ```
 cdk bootstrap
 ```
+
+typescript のバージョン確認方法
+
+```
+npm ls typescript
+もしくは
+./node_modules/typescript/bin/tsc --version
+```
