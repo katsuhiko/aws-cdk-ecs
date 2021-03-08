@@ -18,25 +18,25 @@ export class SgStack extends Stack {
     this.bastionSg = new SecurityGroup(this, 'BastionSg', {
       vpc: props.vpc,
     });
-    Tags.of(this.bastionSg).add('Name', 'SgStack/BastionSg');
+    Tags.of(this.bastionSg).add('Name', this.bastionSg.node.path);
 
     this.albSg = new SecurityGroup(this, 'AlbSg', {
       vpc: props.vpc,
     });
-    Tags.of(this.albSg).add('Name', 'SgStack/AlbSg');
+    Tags.of(this.albSg).add('Name', this.albSg.node.path);
     this.albSg.addIngressRule(Peer.anyIpv4(), Port.tcp(80));
     this.albSg.addIngressRule(Peer.anyIpv4(), Port.tcp(443));
 
     this.webSg = new SecurityGroup(this, 'WebSg', {
       vpc: props.vpc,
     });
-    Tags.of(this.webSg).add('Name', 'SgStack/WebSg');
+    Tags.of(this.webSg).add('Name', this.webSg.node.path);
     this.webSg.addIngressRule(this.albSg, Port.tcp(80));
 
     this.rdsSg = new SecurityGroup(this, 'RdsSg', {
       vpc: props.vpc,
     });
-    Tags.of(this.rdsSg).add('Name', 'SgStack/RdsSg');
+    Tags.of(this.rdsSg).add('Name', this.rdsSg.node.path);
     this.rdsSg.addIngressRule(this.bastionSg, Port.tcp(3306));
     this.rdsSg.addIngressRule(this.webSg, Port.tcp(3306));
   }
