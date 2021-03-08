@@ -9,7 +9,7 @@ export class NetworkStack extends Stack {
     super(scope, id, props);
 
     this.vpc = new Vpc(this, 'VPC', {
-      maxAzs: 3,
+      maxAzs: 2,
       subnetConfiguration: [
         { name: 'Frontend', subnetType: SubnetType.PUBLIC, cidrMask: 24 },
         { name: 'Application', subnetType: SubnetType.PUBLIC, cidrMask: 24 },
