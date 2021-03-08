@@ -31,6 +31,12 @@ npm ls typescript
 
 ----
 
+```
+npm install @aws-cdk/aws-ec2
+```
+
+----
+
 参考サイト
 
 - https://dev.classmethod.jp/articles/aws-cdk-command-line-interface/
