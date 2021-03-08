@@ -4,6 +4,7 @@ import * as cdk from '@aws-cdk/core';
 import { AwsCdkEcsStack } from '../lib/aws-cdk-ecs-stack';
 import { NetworkStack } from '../lib/network-stack';
 import { SgStack } from '../lib/sg-stack';
+import { EcrStack } from '../lib/ecr-stack';
 
 const app = new cdk.App();
 
@@ -13,3 +14,5 @@ const networkStack = new NetworkStack(app, 'NetworkStack');
 new SgStack(app, 'SgStack', {
   vpc: networkStack.vpc
 });
+
+new EcrStack(app, 'EcrStack');
