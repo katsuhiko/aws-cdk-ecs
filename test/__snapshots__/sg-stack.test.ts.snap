@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SG Stack 1`] = `
+Object {
+  "Resources": Object {
+    "AlbSg1155C1BE": Object {
+      "Properties": Object {
+        "GroupDescription": "TestStack/AlbSg",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "SecurityGroupIngress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:80",
+            "FromPort": 80,
+            "IpProtocol": "tcp",
+            "ToPort": 80,
+          },
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:443",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443,
+          },
+        ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "TestStack/AlbSg",
+          },
+        ],
+        "VpcId": Object {
+          "Fn::ImportValue": "GivenStack:ExportsOutputRefTestVPCD26570D8E54DE509",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "BastionSg3D6BE75A": Object {
+      "Properties": Object {
+        "GroupDescription": "TestStack/BastionSg",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "TestStack/BastionSg",
+          },
+        ],
+        "VpcId": Object {
+          "Fn::ImportValue": "GivenStack:ExportsOutputRefTestVPCD26570D8E54DE509",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "RdsSg7F9F43B6": Object {
+      "Properties": Object {
+        "GroupDescription": "TestStack/RdsSg",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "TestStack/RdsSg",
+          },
+        ],
+        "VpcId": Object {
+          "Fn::ImportValue": "GivenStack:ExportsOutputRefTestVPCD26570D8E54DE509",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "RdsSgfromTestStackBastionSg48D7AC253306182B884C": Object {
+      "Properties": Object {
+        "Description": "from TestStackBastionSg48D7AC25:3306",
+        "FromPort": 3306,
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "RdsSg7F9F43B6",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "SourceSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "BastionSg3D6BE75A",
+            "GroupId",
+          ],
+        },
+        "ToPort": 3306,
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+    "RdsSgfromTestStackWebSgC437B1633306FBB6D128": Object {
+      "Properties": Object {
+        "Description": "from TestStackWebSgC437B163:3306",
+        "FromPort": 3306,
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "RdsSg7F9F43B6",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "SourceSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "WebSg75AA54D5",
+            "GroupId",
+          ],
+        },
+        "ToPort": 3306,
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+    "WebSg75AA54D5": Object {
+      "Properties": Object {
+        "GroupDescription": "TestStack/WebSg",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "TestStack/WebSg",
+          },
+        ],
+        "VpcId": Object {
+          "Fn::ImportValue": "GivenStack:ExportsOutputRefTestVPCD26570D8E54DE509",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "WebSgfromTestStackAlbSgF3BB9BFC80BD1C8FE3": Object {
+      "Properties": Object {
+        "Description": "from TestStackAlbSgF3BB9BFC:80",
+        "FromPort": 80,
+        "GroupId": Object {
+          "Fn::GetAtt": Array [
+            "WebSg75AA54D5",
+            "GroupId",
+          ],
+        },
+        "IpProtocol": "tcp",
+        "SourceSecurityGroupId": Object {
+          "Fn::GetAtt": Array [
+            "AlbSg1155C1BE",
+            "GroupId",
+          ],
+        },
+        "ToPort": 80,
+      },
+      "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+  },
+}
+`;

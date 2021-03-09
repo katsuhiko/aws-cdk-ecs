@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ECR Stack 1`] = `
+Object {
+  "Resources": Object {
+    "AppRepoB478A890": Object {
+      "DeletionPolicy": "Retain",
+      "Properties": Object {
+        "ImageScanningConfiguration": Object {
+          "ScanOnPush": true,
+        },
+        "LifecyclePolicy": Object {
+          "LifecyclePolicyText": "{\\"rules\\":[{\\"rulePriority\\":1,\\"description\\":\\"Delete old images\\",\\"selection\\":{\\"tagStatus\\":\\"any\\",\\"countType\\":\\"imageCountMoreThan\\",\\"countNumber\\":5},\\"action\\":{\\"type\\":\\"expire\\"}}]}",
+        },
+        "RepositoryName": "demo-cdk-app",
+      },
+      "Type": "AWS::ECR::Repository",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "WebRepo9D56C0A3": Object {
+      "DeletionPolicy": "Retain",
+      "Properties": Object {
+        "ImageScanningConfiguration": Object {
+          "ScanOnPush": true,
+        },
+        "LifecyclePolicy": Object {
+          "LifecyclePolicyText": "{\\"rules\\":[{\\"rulePriority\\":1,\\"description\\":\\"Delete old images\\",\\"selection\\":{\\"tagStatus\\":\\"any\\",\\"countType\\":\\"imageCountMoreThan\\",\\"countNumber\\":5},\\"action\\":{\\"type\\":\\"expire\\"}}]}",
+        },
+        "RepositoryName": "demo-cdk-web",
+      },
+      "Type": "AWS::ECR::Repository",
+      "UpdateReplacePolicy": "Retain",
+    },
+  },
+}
+`;

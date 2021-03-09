@@ -31,8 +31,16 @@ npm ls typescript
 
 ----
 
+## テスト
+
 ```
-npm install @aws-cdk/aws-ec2
+npm test
+```
+
+スナップショットを更新する場合
+
+```
+npm test -- -u
 ```
 
 ----
