@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  web:
+    build: ./nginx
+    container_name: web
+    ports:
+      - 80:80
+  app:
+    build: ./php-fpm
+    container_name: app
